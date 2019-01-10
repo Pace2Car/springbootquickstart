@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pace2car.springbootdemo.mapper.UserMapper">
+
+    <!-- 开启Redis二级缓存 -->
+    <cache/>
+
+    <select id="selectComplexUser" resultType="com.pace2car.springbootdemo.vo.User" useCache="true">
+        select
+        u.id as id,
+        u.username as username,
+        password as password,
+        age as age,
+        email as email,
+        address as address
+        from user u
+        left join address a on u.username = a.username
+        where 1=1
+        <if test="id != null and id != ''">
+            and u.id = #{id}
+        </if>
+        <if test="username != null and username != ''">
+            and u.username = #{username}
+        </if>
+        <if test="password != null and password != ''">
+            and u.password = #{password}
+        </if>
+        <if test="age != null and age != ''">
+            and u.age = #{age}
+        </if>
+        <if test="email != null and email != ''">
+            and u.email = #{email}
+        </if>
+        <if test="address != null and address != ''">
+            and address = #{address}
+        </if>
+    </select>
+
+</mapper>
