@@ -1,4 +1,4 @@
-package com.pace2car.springbootdemo.vo;
+package com.pace2car.springbootdemo.web.vo;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.enums.IdType;

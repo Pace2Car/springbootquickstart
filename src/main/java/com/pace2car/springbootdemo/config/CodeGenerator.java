@@ -53,7 +53,6 @@ public class CodeGenerator {
         StrategyConfig strategyConfig = new StrategyConfig();
         strategyConfig
                 .setEntityLombokModel(true)
-                .setSuperEntityClass("com.pace2car.springbootdemo.dto.BasePageParam")
                 .setCapitalMode(true)
                 .setDbColumnUnderline(true)
                 .setNaming(NamingStrategy.underline_to_camel)

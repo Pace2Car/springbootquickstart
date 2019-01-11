@@ -23,7 +23,7 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.pace2car.springbootdemo.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.pace2car.springbootdemo.web"))
                 .paths(PathSelectors.any())
                 .build();
     }

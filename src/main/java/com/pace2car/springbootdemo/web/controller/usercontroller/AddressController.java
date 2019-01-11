@@ -1,4 +1,4 @@
-package com.pace2car.springbootdemo.controller;
+package com.pace2car.springbootdemo.web.controller.usercontroller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;

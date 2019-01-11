@@ -15,5 +15,5 @@ import java.util.List;
  * @since 2019-01-09
  */
 public interface UserService extends IService<User> {
-    List<com.pace2car.springbootdemo.vo.User> getComplexUser(GetUserParam param);
+    List<com.pace2car.springbootdemo.web.vo.User> getComplexUser(GetUserParam param);
 }

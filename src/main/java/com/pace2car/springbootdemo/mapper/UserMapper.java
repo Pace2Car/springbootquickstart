@@ -15,5 +15,5 @@ import java.util.List;
  * @since 2019-01-09
  */
 public interface UserMapper extends BaseMapper<User> {
-    List<com.pace2car.springbootdemo.vo.User> selectComplexUser(GetUserParam param);
+    List<com.pace2car.springbootdemo.web.vo.User> selectComplexUser(GetUserParam param);
 }
