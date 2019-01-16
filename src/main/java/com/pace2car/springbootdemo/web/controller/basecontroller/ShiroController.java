@@ -7,6 +7,7 @@ import com.pace2car.springbootdemo.shiro.entity.UPermission;
 import com.pace2car.springbootdemo.shiro.entity.UUser;
 import com.pace2car.springbootdemo.shiro.service.UPermissionService;
 import com.pace2car.springbootdemo.shiro.service.UUserService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,16 +29,21 @@ import java.util.Map;
 
 /**
  * <p>
- *  权限前端控制器
+ *  认证授权前端控制器
  * </p>
  *
  * @author Pace2Car
  * @since 2019-01-10
  */
+@Api(value = "权限管理")
 @Controller
 public class ShiroController {
 
     private Logger logger = LogManager.getLogger("userController");
+
+    private static final String UNKNOWACCOUNT = "org.apache.shiro.authc.UnknownAccountException";
+
+    private static final String INCORRECTCREDENTIALS = "org.apache.shiro.authc.IncorrectCredentialsException";
 
     @Autowired
     private UUserService uuserService;
@@ -53,10 +59,12 @@ public class ShiroController {
         // 获取登录失败异常信息
         String failureMessage = (String) request.getAttribute("shiroLoginFailure");
         // 根据返回的异常信息判断返回的异常信息
-        if (failureMessage != null) {
-            logger.info("账号或密码错误");
-        } else {
+        if (failureMessage == null) {
             logger.info("请先登录");
+        } else if (UNKNOWACCOUNT.equals(failureMessage)) {
+            logger.info("账户不存在");
+        } else if (INCORRECTCREDENTIALS.equals(failureMessage)) {
+            logger.info("密码错误");
         }
         return "login";
     }
@@ -97,7 +105,7 @@ public class ShiroController {
      */
     @GetMapping("/403")
     public String notRole(){
-        return "noRole";
+        return "403";
     }
 
     /**

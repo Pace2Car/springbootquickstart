@@ -17,10 +17,14 @@ public class VisiableThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
 
     private Logger logger = LogManager.getLogger("visiableThreadPoolTaskExecutor");
 
-    private void showThreadPoolInfo(String prefix){
+    /**
+     * 显示当前线程池信息
+     * @param prefix
+     */
+    private void showThreadPoolInfo(String prefix) {
         ThreadPoolExecutor threadPoolExecutor = getThreadPoolExecutor();
 
-        if(null==threadPoolExecutor){
+        if (null == threadPoolExecutor) {
             return;
         }
 

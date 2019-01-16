@@ -7,6 +7,7 @@ import com.pace2car.springbootdemo.dto.GetUserParam;
 import com.pace2car.springbootdemo.entity.User;
 import com.pace2car.springbootdemo.service.UserService;
 import com.pace2car.springbootdemo.shiro.anno.PermissionName;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,8 +15,8 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -27,7 +28,8 @@ import java.util.List;
  * @author Pace2Car
  * @since 2019-01-09
  */
-@Controller
+@Api(value = "用户管理")
+@RestController
 @RequestMapping("/user")
 public class UserController {
 
@@ -40,7 +42,6 @@ public class UserController {
     @GetMapping(value = "/all")
     @RequiresPermissions("user:select")
     @PermissionName("查询用户")
-    @ResponseBody
     public List<User> getAll() {
         logger.info("查询所有用户");
         return userService.selectList(new EntityWrapper<>());
@@ -50,7 +51,6 @@ public class UserController {
     @GetMapping(value = "/page")
     @RequiresPermissions("user:select")
     @PermissionName("查询用户")
-    @ResponseBody
     public Page<User> getAllByPage(Integer pageNum, Integer pageSize, User user) {
         logger.info("根据条件分页查询用户");
         return userService.selectPage(new Page<>(pageNum, pageSize), new EntityWrapper<>(user));
@@ -60,7 +60,6 @@ public class UserController {
     @GetMapping(value = "/id")
     @RequiresPermissions("user:select")
     @PermissionName("查询用户")
-    @ResponseBody
     public List<User> getAllById(Integer id) {
         logger.info("根据ID查询用户");
         return userService.selectList(new EntityWrapper<User>().eq("id", id));

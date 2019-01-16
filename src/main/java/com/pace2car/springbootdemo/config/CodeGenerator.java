@@ -18,20 +18,20 @@ import java.util.List;
  */
 public class CodeGenerator {
 
-    public static final String DB_URL = "jdbc:mysql://localhost:3306/springbootdemo?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true";
-    public static final String USER_NAME = "root";
-    public static final String PASSWORD = "123456";
-    public static final String DRIVER = "com.mysql.jdbc.Driver";
-    public static final String AUTHOR = "Pace2Car";
-    public static final String PROJECT_PATH = System.getProperty("user.dir");
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/springbootdemo?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true";
+    private static final String USER_NAME = "root";
+    private static final String PASSWORD = "123456";
+    private static final String DRIVER = "com.mysql.jdbc.Driver";
+    private static final String AUTHOR = "Pace2Car";
+    private static final String PROJECT_PATH = System.getProperty("user.dir");
     /**
      * 生成的文件输出到哪个目录
      */
-    public static final String OUTPUT_FILE = PROJECT_PATH + "/src/main/java";
+    private static final String OUTPUT_FILE = PROJECT_PATH + "/src/main/java";
     /**
      * 包名，会按照com.pace2car.springbootdemo这种形式生成类
      */
-    public static final String PACKAGE = "com.pace2car.springbootdemo";
+    private static final String PACKAGE = "com.pace2car.springbootdemo";
 
     public void generateByTables(String moduleName, String... tableNames) {
         // 全局配置

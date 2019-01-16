@@ -3,6 +3,7 @@ package com.pace2car.springbootdemo.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -14,6 +15,7 @@ import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
@@ -58,9 +60,9 @@ public class RedisConfig {
      * @return
      */
     @Bean(name = "redisCacheManager")
-    public CacheManager cacheManager(RedisConnectionFactory factory) {
+    public CacheManager redisCacheManager(RedisConnectionFactory factory) {
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofSeconds(600))
+                .entryTtl(Duration.ofSeconds(1800))
                 .disableCachingNullValues();
 
         return RedisCacheManager.builder(factory)
@@ -70,12 +72,11 @@ public class RedisConfig {
     }
 
     /**
-     * 1.项目启动时此方法先被注册成bean被spring管理
-     *
+     * 项目启动时此方法先被注册成bean被spring管理
      * @param connectionFactory
      * @return
      */
-    @Bean
+    @Bean(name = "redisTemplate")
     public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
         RedisTemplate<Object, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
@@ -95,4 +96,11 @@ public class RedisConfig {
         return template;
     }
 
+    @Bean(name = "sessionRedisTemplate")
+    public RedisTemplate<String, Object> sessionRedisTemplate(RedisConnectionFactory connectionFactory) {
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
+        template.setConnectionFactory(connectionFactory);
+        template.afterPropertiesSet();
+        return template;
+    }
 }

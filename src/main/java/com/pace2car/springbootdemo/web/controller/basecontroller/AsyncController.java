@@ -2,6 +2,7 @@ package com.pace2car.springbootdemo.web.controller.basecontroller;
 
 import com.pace2car.springbootdemo.service.AsyncService;
 import com.pace2car.springbootdemo.shiro.anno.PermissionName;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Pace2Car
  * @date 2019/1/10 14:41
  */
+@Api(value = "异步管理")
 @RestController
 @RequestMapping("async")
 public class AsyncController {
