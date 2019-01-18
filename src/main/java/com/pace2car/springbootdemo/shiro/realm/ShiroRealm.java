@@ -55,7 +55,9 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principal) {
-        UUser user = (UUser) principal.getPrimaryPrincipal();
+        Object principal1 = principal.getPrimaryPrincipal();
+
+        UUser user = (UUser) principal1;
 
         List<String> userRoles = uRoleService.selectAllRolesByUsername(user.getUsername());
 
@@ -81,12 +83,12 @@ public class ShiroRealm extends AuthorizingRealm {
         logger.info("用户登录，登录信息-->{}", token);
         //获取用户的输入的账号.
         String username = (String) token.getPrincipal();
-        //通过username从数据库中查找 User对象，如果找到，没找到.
-        //实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
+        // 通过username从数据库中查找 User对象，如果找到，没找到.
+        // 实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
         UUser user = uUserService.selectOne(new EntityWrapper<UUser>().eq("username", username));
         logger.info("用户登录，登录信息-->{}", user);
         if (user == null) {
-            ////没有返回登录用户名对应的SimpleAuthenticationInfo对象时,就会在LoginController中抛出UnknownAccountException异常
+            // 没有返回登录用户名对应的SimpleAuthenticationInfo对象时,就会在LoginController中抛出UnknownAccountException异常
             return null;
         } else {
             user.setLastLoginTime(new Timestamp(System.currentTimeMillis()));

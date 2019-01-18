@@ -22,8 +22,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public ErrorInfo jsonErrorHandler(HttpServletRequest req, Exception e) throws Exception	{
-
+    public ErrorInfo jsonErrorHandler(HttpServletRequest req, Exception e) {
         logger.warn(e.getMessage()+" : "+req.getRequestURL().toString());
         ErrorInfo r = new ErrorInfo();
         if (e instanceof UnauthorizedException) {

@@ -90,8 +90,8 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
         Session session = subject.getSession();
         //这里获取的User是实体 因为我在 自定义ShiroRealm中的doGetAuthenticationInfo方法中
         //new SimpleAuthenticationInfo(user, password, getName()); 传的是 User实体 所以这里拿到的也是实体,如果传的是userName 这里拿到的就是userName
-        UUser principal = (UUser) subject.getPrincipal();
-        String username = principal.getUsername();
+        Object principal = subject.getPrincipal();
+        String username = ((UUser) principal).getUsername();
         Serializable sessionId = session.getId();
 
         // 初始化用户的队列放到缓存里

@@ -2,6 +2,15 @@ server:
   port: 8080
 
 spring:
+  application:
+    name: springbootdemo
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8081
+#        instance:
+#          name: springbootdemo
+#          prefer-ip: true
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
@@ -83,4 +92,11 @@ mybatis-plus:
 
 logging:
   config: classpath:log4j2.xml
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#      base-path: /
 

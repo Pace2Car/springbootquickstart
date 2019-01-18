@@ -25,6 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
+ * shiro 配置
  * @author Pace2Car
  * @date 2019/1/10 17:38
  */
@@ -42,7 +43,7 @@ public class ShiroConfig {
      * 自定义身份认证 realm;
      * <p>
      * 必须写这个类，并加上 @Bean 注解，目的是注入 ShiroRealm，
-     * 否则会影响 CustomRealm类 中其他类的依赖注入
+     * 否则会影响 ShiroRealm类 中其他类的依赖注入
      */
     @Bean(name = "shiroRealm")
     @DependsOn(value = "lifecycleBeanPostProcessor")
@@ -52,6 +53,7 @@ public class ShiroConfig {
 
     /**
      * 配置Redis缓存
+     *
      * @return
      */
     @Bean(name = "shiroRedisCacheManager")
@@ -78,6 +80,7 @@ public class ShiroConfig {
 
     /**
      * 配置shiro session 的一个管理器
+     *
      * @return
      */
     @Bean(name = "sessionManager")
@@ -92,35 +95,35 @@ public class ShiroConfig {
         return sessionManager;
     }
 
-    @Bean
-    public FilterRegistrationBean delegatingFilterProxy(){
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-        DelegatingFilterProxy proxy = new DelegatingFilterProxy();
-        proxy.setTargetFilterLifecycle(true);
-        proxy.setTargetBeanName("shiroFilter");
-        filterRegistrationBean.setFilter(proxy);
-        return filterRegistrationBean;
-    }
+//    @Bean
+//    public FilterRegistrationBean delegatingFilterProxy() {
+//        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+//        DelegatingFilterProxy proxy = new DelegatingFilterProxy();
+//        proxy.setTargetFilterLifecycle(true);
+//        proxy.setTargetBeanName("shiroFilter");
+//        filterRegistrationBean.setFilter(proxy);
+//        return filterRegistrationBean;
+//    }
 
     /**
      * 并发登录控制
      */
-    @Bean
-    public KickoutSessionControlFilter kickoutSessionControlFilter(CacheManager cacheManager) {
-        KickoutSessionControlFilter kickoutSessionControlFilter = new KickoutSessionControlFilter();
-        // 用于根据会话ID，获取会话进行踢出操作
-        kickoutSessionControlFilter.setSessionManager(defaultWebSessionManager());
-        // 使用cacheManager获取响应的cache来缓存用户登录的会话，用于保存用户-会话之间的关系
-        kickoutSessionControlFilter.setCacheManager(cacheManager);
-        // 是否踢出后来登录的，默认是false，即后者登录的用户踢出前者登录的用户
-        kickoutSessionControlFilter.setKickoutAfter(false);
-        // 同一个用户最大的会话数，默认1；比如2的意思是同一个用户允许最多同时两人登录
-        kickoutSessionControlFilter.setMaxSession(1);
-        // 被踢出后重定向到的地址
-        kickoutSessionControlFilter.setKickoutUrl("/login?kickout=1");
-
-        return kickoutSessionControlFilter;
-    }
+//    @Bean
+//    public KickoutSessionControlFilter kickoutSessionControlFilter(CacheManager cacheManager) {
+//        KickoutSessionControlFilter kickoutSessionControlFilter = new KickoutSessionControlFilter();
+//        // 用于根据会话ID，获取会话进行踢出操作
+//        kickoutSessionControlFilter.setSessionManager(defaultWebSessionManager());
+//        // 使用cacheManager获取响应的cache来缓存用户登录的会话，用于保存用户-会话之间的关系
+//        kickoutSessionControlFilter.setCacheManager(cacheManager);
+//        // 是否踢出后来登录的，默认是false，即后者登录的用户踢出前者登录的用户
+//        kickoutSessionControlFilter.setKickoutAfter(false);
+//        // 同一个用户最大的会话数，默认1；比如2的意思是同一个用户允许最多同时两人登录
+//        kickoutSessionControlFilter.setMaxSession(1);
+//        // 被踢出后重定向到的地址
+//        kickoutSessionControlFilter.setKickoutUrl("/login?kickout=1");
+//
+//        return kickoutSessionControlFilter;
+//    }
 
     /**
      * 注入 securityManager
@@ -153,13 +156,14 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSuccessUrl("/index");
 
         //自定义拦截器限制并发在线人数
-        LinkedHashMap<String, Filter> filtersMap = new LinkedHashMap<>();
+//        LinkedHashMap<String, Filter> filtersMap = new LinkedHashMap<>();
         //限制同一帐号同时在线的个数
-        filtersMap.put("kickout", kickoutSessionControlFilter(cacheManager));
-        shiroFilterFactoryBean.setFilters(filtersMap);
+//        filtersMap.put("kickout", kickoutSessionControlFilter(cacheManager));
+//        shiroFilterFactoryBean.setFilters(filtersMap);
 
         //配置不登录可以访问的资源，anon 表示资源都可以匿名访问
         filterChainDefinitionMap.put("/static/**", "anon");
+        filterChainDefinitionMap.put("/actuator/**", "anon");
         filterChainDefinitionMap.put("/favicon.ico", "anon");
         // 对swagger文档开放
         filterChainDefinitionMap.put("/swagger-ui.html", "anon");
@@ -170,7 +174,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/logout", "logout");
         //<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
         //<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
-        filterChainDefinitionMap.put("/**", "authc,kickout");
+        filterChainDefinitionMap.put("/**", "authc");
 
         //未授权界面;
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");

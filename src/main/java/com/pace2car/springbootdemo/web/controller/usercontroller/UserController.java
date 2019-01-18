@@ -78,4 +78,16 @@ public class UserController {
         return userList;
     }
 
+    @ApiOperation(value = "验证权限AOP", notes = "测试联表查询（常规Mybatis实现）")
+    @GetMapping(value = "/verify")
+    @PermissionName("查询用户")
+    @ResponseBody
+    public List<com.pace2car.springbootdemo.web.vo.User> getUserByVerify(GetUserParam param) {
+        logger.info("根据复杂条件查询用户");
+        long start = System.currentTimeMillis();
+        List<com.pace2car.springbootdemo.web.vo.User> userList = userService.getComplexUser(param);
+        logger.info(System.currentTimeMillis() - start + "ms");
+        return userList;
+    }
+
 }
