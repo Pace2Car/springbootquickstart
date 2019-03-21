@@ -1,4 +1,4 @@
-package com.pace2car.springbootdemo.config;
+package com.pace2car.springbootdemo.generetor;
 
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;

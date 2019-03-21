@@ -2,11 +2,8 @@ package com.pace2car.springbootdemo.config;
 
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -19,13 +16,13 @@ import java.util.concurrent.TimeUnit;
  */
 public class ShiroRedisCache<K, V> implements Cache<K, V> {
 
-    private static final String REDIS_SHIRO_CACHE = "shiro-cache:";
+    private static final String SHIRO_REDIS_CACHE = "shiro-redis-cache:";
     private static final long GLOB_EXPIRE = 30;
     private String cacheKey;
     private RedisTemplate<K, V> redisTemplate;
 
     public ShiroRedisCache(RedisTemplate<K, V> client, String name) {
-        this.cacheKey = REDIS_SHIRO_CACHE + name + ":";
+        this.cacheKey = SHIRO_REDIS_CACHE + name + ":";
         this.redisTemplate = client;
     }
 

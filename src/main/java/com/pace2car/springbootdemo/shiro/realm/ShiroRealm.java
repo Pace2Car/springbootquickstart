@@ -55,13 +55,11 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principal) {
-        Object principal1 = principal.getPrimaryPrincipal();
+        Object username = principal.getPrimaryPrincipal();
 
-        UUser user = (UUser) principal1;
+        List<String> userRoles = uRoleService.selectAllRolesByUsername((String) username);
 
-        List<String> userRoles = uRoleService.selectAllRolesByUsername(user.getUsername());
-
-        List<String> permissions = uPermissionService.selectAllResourcesByUsername(user.getUsername());
+        List<String> permissions = uPermissionService.selectAllResourcesByUsername((String) username);
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.addRoles(userRoles);
@@ -95,7 +93,7 @@ public class ShiroRealm extends AuthorizingRealm {
             uUserService.updateById(user);
         }
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                user,
+                username,
                 user.getPassword(),
                 getName()
         );

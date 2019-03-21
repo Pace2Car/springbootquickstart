@@ -24,6 +24,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ErrorInfo jsonErrorHandler(HttpServletRequest req, Exception e) {
         logger.warn(e.getMessage()+" : "+req.getRequestURL().toString());
+        e.printStackTrace();
         ErrorInfo r = new ErrorInfo();
         if (e instanceof UnauthorizedException) {
             logger.info("用户无权访问 : " + req.getRequestURL().toString());
