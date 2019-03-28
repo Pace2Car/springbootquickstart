@@ -11,4 +11,5 @@ public interface AsyncService {
      * 异步处理
      */
     void executeAsync();
+
 }
