@@ -2,6 +2,9 @@ server:
   port: 8080
 
 spring:
+  data:
+    mongodb:
+      uri: mongodb://mongodb:123456@localhost:27017/mongodb
   application:
     name: springbootdemo
 #  boot:

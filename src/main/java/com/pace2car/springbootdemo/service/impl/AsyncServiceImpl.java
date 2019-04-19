@@ -1,8 +1,8 @@
 package com.pace2car.springbootdemo.service.impl;
 
 import com.pace2car.springbootdemo.service.AsyncService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AsyncServiceImpl implements AsyncService {
 
-    private Logger logger = LogManager.getLogger("asyncService");
+    private Logger logger = LoggerFactory.getLogger(AsyncServiceImpl.class);
 
     @Override
     @Async("asyncServiceExecutor")
