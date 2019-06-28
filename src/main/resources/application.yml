@@ -97,7 +97,6 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: true
 
-
 logging:
   config: classpath:log4j2.xml
 
@@ -108,3 +107,7 @@ logging:
 #        include: "*"
 #      base-path: /
 
+#elasticjob分布式任务调度配置
+elasticjob:
+  server-lists: 127.0.0.1:2181
+  namespace: elasticjob

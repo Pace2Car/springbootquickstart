@@ -17,7 +17,7 @@ public class ScheduledTasks {
 
     private Logger logger = LogManager.getLogger("schediledTasks");
 
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
      * 定时任务
@@ -27,6 +27,6 @@ public class ScheduledTasks {
      */
     @Scheduled(initialDelay = 1000, fixedRate = 60000)
     public void reportCurrentTime() {
-        logger.info("现在时间 : " + dateFormat.format(new Date()));
+        logger.info("现在时间 : " + DATE_FORMAT.format(new Date()));
     }
 }

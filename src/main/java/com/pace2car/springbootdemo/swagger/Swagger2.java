@@ -1,4 +1,4 @@
-package com.pace2car.springbootdemo;
+package com.pace2car.springbootdemo.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
