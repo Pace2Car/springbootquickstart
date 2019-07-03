@@ -1,5 +1,6 @@
-package com.pace2car.springbootdemo.config;
+package com.pace2car.springbootdemo.cache;
 
+import com.pace2car.springbootdemo.cache.ShiroRedisCache;
 import org.apache.shiro.cache.AbstractCacheManager;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;

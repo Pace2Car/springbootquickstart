@@ -1,6 +1,5 @@
-package com.pace2car.springbootdemo.rabbit;
+package com.pace2car.springbootdemo.rabbit.receiver;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
@@ -8,19 +7,19 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 /**
- * topic消息接受者
+ * 消息接受者
  * @author Pace2Car
  * @date 2019/3/28 10:08
  */
 @Component
-@RabbitListener(queues = "topic.messages")
-public class TopicReceiver2 {
+@RabbitListener(queues = "hello")
+public class HelloReceiver2 {
 
-    private Logger logger = LogManager.getLogger("topicReceiver2");
+    private Logger logger = LogManager.getLogger("helloReceiver2");
 
     @RabbitHandler
     public void process(String hello) {
-        logger.debug("topicRecerver 2:" + hello);
+        logger.debug("Receiver 2:" + hello);
     }
 
 }

@@ -1,5 +1,7 @@
 package com.pace2car.springbootdemo.config;
 
+import com.pace2car.springbootdemo.cache.RedisSessionDAO;
+import com.pace2car.springbootdemo.cache.ShiroRedisCacheManager;
 import com.pace2car.springbootdemo.shiro.realm.ShiroRealm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -37,7 +39,7 @@ public class ShiroConfig {
 
     /**
      * 自定义身份认证 realm;
-     * <p>
+     *
      * 必须写这个类，并加上 @Bean 注解，目的是注入 ShiroRealm，
      * 否则会影响 ShiroRealm类 中其他类的依赖注入
      */

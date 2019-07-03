@@ -15,7 +15,7 @@ import java.util.Date;
 @Component
 public class ScheduledTasks {
 
-    private Logger logger = LogManager.getLogger("schediledTasks");
+    private Logger logger = LogManager.getLogger("scheduledTasks");
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -23,7 +23,7 @@ public class ScheduledTasks {
      * 定时任务
      * 输出当前时间
      * 启动后延迟一秒输出，间隔60秒
-     * 也可通过cron表达式控制@Scheduled(cron="* * * * * * *")
+     * 也可通过cron表达式控制@Scheduled(cron="1 0/1 * * * ? *")
      */
     @Scheduled(initialDelay = 1000, fixedRate = 60000)
     public void reportCurrentTime() {

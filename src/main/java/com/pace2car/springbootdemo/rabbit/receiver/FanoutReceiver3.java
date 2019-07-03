@@ -1,4 +1,4 @@
-package com.pace2car.springbootdemo.rabbit;
+package com.pace2car.springbootdemo.rabbit.receiver;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -7,19 +7,19 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 /**
- * 消息接受者
+ * fanout消息接受者
  * @author Pace2Car
  * @date 2019/3/28 10:08
  */
 @Component
-@RabbitListener(queues = "hello")
-public class HelloReceiver {
+@RabbitListener(queues = "fanout.C")
+public class FanoutReceiver3 {
 
-    private Logger logger = LogManager.getLogger("helloReceiver");
+    private Logger logger = LogManager.getLogger("fanoutReceiver3");
 
     @RabbitHandler
     public void process(String hello) {
-        logger.debug("Recerver 1:" + hello);
+        logger.debug("fanoutReceiver C:" + hello);
     }
 
 }

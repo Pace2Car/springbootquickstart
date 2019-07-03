@@ -14,7 +14,6 @@ import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
@@ -42,9 +41,9 @@ public class ShiroController {
 
     private Logger logger = LogManager.getLogger("userController");
 
-    private static final String UNKNOWACCOUNT = "org.apache.shiro.authc.UnknownAccountException";
+    private static final String UNKNOWN_ACCOUNT = "org.apache.shiro.authc.UnknownAccountException";
 
-    private static final String INCORRECTCREDENTIALS = "org.apache.shiro.authc.IncorrectCredentialsException";
+    private static final String INCORRECT_CREDENTIALS = "org.apache.shiro.authc.IncorrectCredentialsException";
 
     @Autowired
     private UUserService uuserService;
@@ -62,9 +61,9 @@ public class ShiroController {
         // 根据返回的异常信息判断返回的异常信息
         if (failureMessage == null) {
             logger.info("请先登录");
-        } else if (UNKNOWACCOUNT.equals(failureMessage)) {
+        } else if (UNKNOWN_ACCOUNT.equals(failureMessage)) {
             logger.info("账户不存在");
-        } else if (INCORRECTCREDENTIALS.equals(failureMessage)) {
+        } else if (INCORRECT_CREDENTIALS.equals(failureMessage)) {
             logger.info("密码错误");
         }
         return "login";

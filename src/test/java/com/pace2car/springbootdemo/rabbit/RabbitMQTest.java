@@ -1,5 +1,9 @@
 package com.pace2car.springbootdemo.rabbit;
 
+import com.pace2car.springbootdemo.rabbit.sender.FanoutSender;
+import com.pace2car.springbootdemo.rabbit.sender.HelloSender;
+import com.pace2car.springbootdemo.rabbit.sender.HelloSender2;
+import com.pace2car.springbootdemo.rabbit.sender.TopicSender;
 import com.pace2car.springbootdemo.shiro.entity.UUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;

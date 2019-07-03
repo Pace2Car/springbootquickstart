@@ -68,7 +68,7 @@ public class MongoDBTest {
     public void testPageQuery() {
         // 拼接查询条件
         int pageNum = 3;
-        int pageSize = 2;
+        int pageSize = 5;
         Query query = new Query();
         Criteria criteria = new Criteria();
         String regex = "^.*a.*$";
@@ -83,8 +83,8 @@ public class MongoDBTest {
         long totals = mongoTemplate.count(query, UserLog.class);
         result.put("page", pageNum);
         result.put("pages", (long) Math.ceil((double) totals / pageSize));
-        result.put("totals", totals);
-        result.put("userLogs", userLogs);
+        result.put("total", totals);
+        result.put("data", userLogs);
         logger.info("mongo条件模糊匹配分页查询，结果：{}", result);
     }
 }

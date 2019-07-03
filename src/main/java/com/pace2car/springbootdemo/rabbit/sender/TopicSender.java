@@ -1,4 +1,4 @@
-package com.pace2car.springbootdemo.rabbit;
+package com.pace2car.springbootdemo.rabbit.sender;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,13 +22,13 @@ public class TopicSender {
 
     public void send1() {
         String context = "hi, i am topic message 1";
-        logger.debug("Sender:" + context);
+        logger.debug("sender:" + context);
         rabbitTemplate.convertAndSend("exchange", "topic.message", context);
     }
 
     public void send2() {
         String context = "hi, i am topic message 2";
-        logger.debug("Sender:" + context);
+        logger.debug("sender:" + context);
         rabbitTemplate.convertAndSend("exchange", "topic.messages", context);
     }
 

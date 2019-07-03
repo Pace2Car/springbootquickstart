@@ -1,4 +1,4 @@
-package com.pace2car.springbootdemo.rabbit;
+package com.pace2car.springbootdemo.rabbit.sender;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,7 +22,7 @@ public class FanoutSender {
 
     public void send() {
         String context = "hi, i am fanout message";
-        logger.debug("Sender:" + context);
+        logger.debug("sender:" + context);
         rabbitTemplate.convertAndSend("fanoutExchange", "", context);
     }
 

@@ -1,4 +1,4 @@
-package com.pace2car.springbootdemo.config;
+package com.pace2car.springbootdemo.cache;
 
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
