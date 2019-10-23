@@ -21,8 +21,7 @@ public class MyJob implements SimpleJob {
 
         logger.info(String.format("Thread ID: %s, 作业分片总数: %s, " +
                         "当前分片项: %s.当前参数: %s," +
-                        "作业名称: %s.作业自定义参数: %s"
-                ,
+                        "作业名称: %s.作业自定义参数: %s",
                 Thread.currentThread().getId(),
                 shardingContext.getShardingTotalCount(),
                 shardingContext.getShardingItem(),

@@ -1,5 +1,6 @@
 package com.pace2car.springbootdemo.rabbit;
 
+import com.pace2car.springbootdemo.SpringbootdemoApplicationTests;
 import com.pace2car.springbootdemo.rabbit.sender.FanoutSender;
 import com.pace2car.springbootdemo.rabbit.sender.HelloSender;
 import com.pace2car.springbootdemo.rabbit.sender.HelloSender2;
@@ -15,9 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author Pace2Car
  * @date 2019/3/28 10:11
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class RabbitMQTest {
+public class RabbitMQTest extends SpringbootdemoApplicationTests {
 
     @Autowired
     private HelloSender helloSender;

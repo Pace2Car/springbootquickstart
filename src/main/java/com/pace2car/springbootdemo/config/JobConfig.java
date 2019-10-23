@@ -45,6 +45,7 @@ public class JobConfig {
                                                         String jobParameters) {
         // 定义作业核心配置
         JobCoreConfiguration simpleCoreConfig = JobCoreConfiguration.newBuilder(jobClass.getName(), cron, shardingTotalCount)
+                .failover(true).description("打印时间")
                 .shardingItemParameters(shardingItemParameters).jobParameter(jobParameters).build();
         // 定义Simple类型的配置
         SimpleJobConfiguration simpleJobConfig = new SimpleJobConfiguration(simpleCoreConfig, jobClass.getCanonicalName());
