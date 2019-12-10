@@ -1,19 +1,13 @@
 package com.pace2car.springbootdemo.shiro.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
-
-import java.io.Serializable;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.pace2car.springbootdemo.dto.BasePageParam;
-
-
-
-import com.baomidou.mybatisplus.annotations.Version;
-
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>

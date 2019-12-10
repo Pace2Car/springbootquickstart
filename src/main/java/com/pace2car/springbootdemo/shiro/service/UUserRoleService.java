@@ -1,7 +1,7 @@
 package com.pace2car.springbootdemo.shiro.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.pace2car.springbootdemo.shiro.entity.UUserRole;
-import com.baomidou.mybatisplus.service.IService;
 
 /**
  * <p>

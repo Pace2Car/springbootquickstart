@@ -1,7 +1,6 @@
 package com.pace2car.springbootdemo.web.controller.basecontroller;
 
-
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.pace2car.springbootdemo.shiro.anno.PermissionName;
 import com.pace2car.springbootdemo.shiro.entity.UPermission;
 import com.pace2car.springbootdemo.shiro.entity.UUser;
@@ -29,7 +28,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  认证授权前端控制器
+ * 认证授权前端控制器
  * </p>
  *
  * @author Pace2Car
@@ -86,11 +85,12 @@ public class ShiroController {
     @ResponseBody
     public List<UUser> getAll() {
         logger.info("查询所有用户");
-        return uuserService.selectList(new EntityWrapper<>());
+        return uuserService.list();
     }
 
     /**
      * 未登录，可以访问的页面
+     *
      * @return
      */
     @RequestMapping("/index")
@@ -101,10 +101,11 @@ public class ShiroController {
 
     /**
      * 未授权
+     *
      * @return
      */
     @GetMapping("/403")
-    public String notRole(){
+    public String notRole() {
         return "403";
     }
 
@@ -137,7 +138,7 @@ public class ShiroController {
                 UPermission p = new UPermission();
                 p.setResource(resource);
                 p.setName(method.getMethodAnnotation(PermissionName.class).value());
-                uPermissionService.insert(p);
+                uPermissionService.save(p);
             }
         }
         resourcesList = uPermissionService.selectAllResources();

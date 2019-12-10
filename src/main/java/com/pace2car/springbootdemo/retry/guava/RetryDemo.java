@@ -31,7 +31,7 @@ public class RetryDemo {
                 .build();
         try {
             retryer.call(callable);
-        }catch (RetryException | ExecutionException e) {
+        } catch (RetryException | ExecutionException e) {
             e.printStackTrace();
         } catch (Exception e) {
             System.out.println("do nothing");

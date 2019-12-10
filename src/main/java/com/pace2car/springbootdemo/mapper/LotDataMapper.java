@@ -1,7 +1,7 @@
 package com.pace2car.springbootdemo.mapper;
 
+import com.pace2car.springbootdemo.entity.LotData;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.pace2car.springbootdemo.entity.Address;
 
 /**
  * <p>
@@ -9,8 +9,8 @@ import com.pace2car.springbootdemo.entity.Address;
  * </p>
  *
  * @author Pace2Car
- * @since 2019-01-09
+ * @since 2019-12-10
  */
-public interface AddressMapper extends BaseMapper<Address> {
+public interface LotDataMapper extends BaseMapper<LotData> {
 
 }

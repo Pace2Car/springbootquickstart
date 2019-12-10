@@ -1,8 +1,8 @@
 package com.pace2car.springbootdemo.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.pace2car.springbootdemo.dto.GetUserParam;
 import com.pace2car.springbootdemo.entity.User;
-import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;
 

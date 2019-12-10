@@ -1,9 +1,9 @@
 package com.pace2car.springbootdemo.shiro.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.pace2car.springbootdemo.shiro.entity.UPermission;
 import com.pace2car.springbootdemo.shiro.mapper.UPermissionMapper;
 import com.pace2car.springbootdemo.shiro.service.UPermissionService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.pace2car.springbootdemo.shiro.service.URoleService;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.pace2car.springbootdemo.shiro.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.pace2car.springbootdemo.shiro.entity.UPermission;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;
 

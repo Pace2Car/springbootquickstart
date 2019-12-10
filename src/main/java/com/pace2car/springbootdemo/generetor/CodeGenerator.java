@@ -1,10 +1,10 @@
 package com.pace2car.springbootdemo.generetor;
 
+import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
-import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
@@ -54,7 +54,6 @@ public class CodeGenerator {
         strategyConfig
                 .setEntityLombokModel(true)
                 .setCapitalMode(true)
-                .setDbColumnUnderline(true)
                 .setNaming(NamingStrategy.underline_to_camel)
                 .setColumnNaming(NamingStrategy.underline_to_camel)
                 .setInclude(tableNames);
@@ -100,6 +99,5 @@ public class CodeGenerator {
                                 .setController("controller")
                                 .setEntity("entity")
                 ).execute();
-
     }
 }

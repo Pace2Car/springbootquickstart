@@ -1,11 +1,9 @@
 package com.pace2car.springbootdemo.shiro.service.impl;
 
-import com.pace2car.springbootdemo.mapper.UserMapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.pace2car.springbootdemo.shiro.entity.UUser;
 import com.pace2car.springbootdemo.shiro.mapper.UUserMapper;
 import com.pace2car.springbootdemo.shiro.service.UUserService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -14,6 +16,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,7 +78,7 @@ public class MongoDBTest {
         criteria.and("username").regex(regex);
         query.addCriteria(criteria);
         // 分页信息
-        query.with(new Sort(Sort.Direction.DESC, "operateTime"));
+        query.with(Sort.by(Sort.Direction.DESC, "operateTime"));
         query.skip((pageNum - 1) * pageSize).limit(pageSize);
         List<UserLog> userLogs = mongoTemplate.find(query, UserLog.class);
         // 封装分页查询结果集

@@ -9,6 +9,6 @@ import com.pace2car.springbootdemo.generetor.CodeGenerator;
 public class DoCodeGenerator {
     public static void main(String[] args) {
         CodeGenerator generator = new CodeGenerator();
-        generator.generateByTables("shiro", "u_user", "u_user_role", "u_role", "u_permission", "u_role_permission");
+        generator.generateByTables("crawler", "lot_data");
     }
 }

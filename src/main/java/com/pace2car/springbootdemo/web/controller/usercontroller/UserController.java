@@ -1,8 +1,9 @@
 package com.pace2car.springbootdemo.web.controller.usercontroller;
 
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.pace2car.springbootdemo.dto.GetUserParam;
 import com.pace2car.springbootdemo.entity.User;
 import com.pace2car.springbootdemo.service.UserService;
@@ -44,16 +45,16 @@ public class UserController {
     @PermissionName("查询用户")
     public List<User> getAll() {
         logger.info("查询所有用户");
-        return userService.selectList(new EntityWrapper<>());
+        return userService.list();
     }
 
     @ApiOperation(value = "分页条件查询用户", notes = "根据条件分页查询用户")
     @GetMapping(value = "/page")
     @RequiresPermissions("user:select")
     @PermissionName("查询用户")
-    public Page<User> getAllByPage(Integer pageNum, Integer pageSize, User user) {
+    public IPage<User> getAllByPage(Integer pageNum, Integer pageSize, User user) {
         logger.info("根据条件分页查询用户");
-        return userService.selectPage(new Page<>(pageNum, pageSize), new EntityWrapper<>(user));
+        return userService.page(new Page<>(pageNum, pageSize), new QueryWrapper<>(user));
     }
 
     @ApiOperation(value = "根据ID查询用户", notes = "根据ID查询用户")
@@ -62,7 +63,7 @@ public class UserController {
     @PermissionName("查询用户")
     public List<User> getAllById(Integer id) {
         logger.info("根据ID查询用户");
-        return userService.selectList(new EntityWrapper<User>().eq("id", id));
+        return userService.list(new QueryWrapper<User>().eq("id", id));
     }
 
     @ApiOperation(value = "联表查询用户", notes = "测试联表查询（常规Mybatis实现）")

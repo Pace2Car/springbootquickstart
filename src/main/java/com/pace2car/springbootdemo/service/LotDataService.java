@@ -1,7 +1,7 @@
 package com.pace2car.springbootdemo.service;
 
+import com.pace2car.springbootdemo.entity.LotData;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.pace2car.springbootdemo.entity.Address;
 
 /**
  * <p>
@@ -9,8 +9,8 @@ import com.pace2car.springbootdemo.entity.Address;
  * </p>
  *
  * @author Pace2Car
- * @since 2019-01-09
+ * @since 2019-12-10
  */
-public interface AddressService extends IService<Address> {
+public interface LotDataService extends IService<LotData> {
 
 }

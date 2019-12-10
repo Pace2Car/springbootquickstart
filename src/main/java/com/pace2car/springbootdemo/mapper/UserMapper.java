@@ -1,8 +1,8 @@
 package com.pace2car.springbootdemo.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.pace2car.springbootdemo.dto.GetUserParam;
 import com.pace2car.springbootdemo.entity.User;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;
 

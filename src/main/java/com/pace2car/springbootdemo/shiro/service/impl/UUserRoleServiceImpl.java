@@ -1,9 +1,9 @@
 package com.pace2car.springbootdemo.shiro.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.pace2car.springbootdemo.shiro.entity.UUserRole;
 import com.pace2car.springbootdemo.shiro.mapper.UUserRoleMapper;
 import com.pace2car.springbootdemo.shiro.service.UUserRoleService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

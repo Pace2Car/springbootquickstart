@@ -1,8 +1,7 @@
 package com.pace2car.springbootdemo.shiro.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.pace2car.springbootdemo.shiro.entity.URole;
-import com.baomidou.mybatisplus.service.IService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 

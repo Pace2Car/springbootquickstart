@@ -1,6 +1,6 @@
 package com.pace2car.springbootdemo;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.pace2car.springbootdemo.entity.User;
 import com.pace2car.springbootdemo.mapper.UserMapper;
 import org.junit.Assert;
@@ -26,7 +26,7 @@ public class SpringbootdemoApplicationTests {
     @Test
     public void testSelect() {
         System.out.println(("----- selectAll method test ------"));
-        List<User> userList = userMapper.selectList(new EntityWrapper<>());
+        List<User> userList = userMapper.selectList(new QueryWrapper<>());
         Assert.assertEquals(3, userList.size());
         userList.forEach(System.out::println);
     }
