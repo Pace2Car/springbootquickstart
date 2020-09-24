@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  */
 public class HutoolTest {
     public static void main(String[] args) {
-        String strDate = "2020-09-02";
+        String strDate = "2020-09-02T00:00:00";
 
         LocalDateTime localDateTime = Convert.toLocalDateTime(strDate);
         System.out.println(localDateTime);

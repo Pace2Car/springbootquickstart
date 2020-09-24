@@ -6,6 +6,7 @@ import com.pace2car.springbootdemo.dto.GetUserParam;
 import com.pace2car.springbootdemo.entity.User;
 import com.pace2car.springbootdemo.mapper.UserMapper;
 import com.pace2car.springbootdemo.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.cache.annotation.CacheConfig;
