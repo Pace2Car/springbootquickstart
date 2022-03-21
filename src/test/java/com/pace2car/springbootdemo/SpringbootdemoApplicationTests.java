@@ -16,20 +16,20 @@ import java.util.List;
 @SpringBootTest
 public class SpringbootdemoApplicationTests {
 
-    @Resource
-    private UserMapper userMapper;
+//    @Resource
+//    private UserMapper userMapper;
 
     @Test
     public void contextLoads() {
     }
 
-    @Test
-    public void testSelect() {
-        System.out.println(("----- selectAll method test ------"));
-        List<User> userList = userMapper.selectList(new QueryWrapper<>());
-        Assert.assertEquals(3, userList.size());
-        userList.forEach(System.out::println);
-    }
+//    @Test
+//    public void testSelect() {
+//        System.out.println(("----- selectAll method test ------"));
+//        List<User> userList = userMapper.selectList(new QueryWrapper<>());
+//        Assert.assertEquals(3, userList.size());
+//        userList.forEach(System.out::println);
+//    }
 
 }
 
